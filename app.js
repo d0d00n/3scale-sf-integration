@@ -55,7 +55,6 @@ function salesforceLogin(requ,resp){
     function (error, response, loginBody) {
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
         result = JSON.parse(loginBody);
-        console.log(result.access_token);
         currentAccessToken = result.access_token;
         request({uri: SALESFORCE_URI+requ.path, method: requ.method, headers: {'Authorization':'Bearer '+currentAccessToken},
             body: requ.body, json: true},
